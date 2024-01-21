@@ -17,6 +17,7 @@ public class Role {
     public static Role createAdminRole() {
         return new Role("Admin");
     }
+    public static Role createClientRole() { return new Role("Client");}
     public Integer getId() {
         return id;
     }

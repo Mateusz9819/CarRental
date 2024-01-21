@@ -29,12 +29,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterSecurity(HttpSecurity http) throws Exception {
         Role adminRole = Role.createAdminRole();
         roleRepository.save(adminRole);
+        Role clientRole = Role.createClientRole();
+        roleRepository.save(clientRole);
 
         http
                 .csrf(c-> c.disable())
                 .cors(c-> c.disable())
                 .authorizeHttpRequests((authorize) ->
-                        authorize.anyRequest().authenticated()
+                        authorize
+                                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                                .anyRequest().authenticated()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
@@ -45,7 +50,9 @@ public class SecurityConfig {
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                                 .permitAll()
-                );
+                )
+                .headers(headers->headers.disable())
+        ;
         return http.build();
     }
 }
