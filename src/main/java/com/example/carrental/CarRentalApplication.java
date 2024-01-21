@@ -10,3 +10,6 @@ public class CarRentalApplication {
         SpringApplication.run(CarRentalApplication.class, args);
     }
 }
+}
+        }
+        }

@@ -1,6 +1,5 @@
 // Klasa Role
 package com.example.carrental.Entity;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

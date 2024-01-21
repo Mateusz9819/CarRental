@@ -11,8 +11,8 @@
     <groupId>org.example</groupId>
     <artifactId>MyShop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>CarRental</name>
-    <description>CarRental</description>
+    <name>MyShop</name>
+    <description>MyShop</description>
     <properties>
             <spring-security.version>6.2.1</spring-security.version>
         <java.version>21</java.version>
