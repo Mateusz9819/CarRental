@@ -6,15 +6,14 @@ import org.hibernate.annotations.LazyCollectionOption;
 import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private String name;
     @Column(nullable = false, unique = true)
     private String username;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String email;
     @Column(nullable = false)
     private String password;
@@ -27,12 +26,6 @@ public class User {
     }
     public void setId(Integer id) {
         this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
     public String getUsername() {
         return username;

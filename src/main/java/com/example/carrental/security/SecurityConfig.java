@@ -1,5 +1,9 @@
 package com.example.carrental.security;
 
+import com.example.carrental.Entity.Role;
+import com.example.carrental.repository.RoleRepository;
+import com.example.carrental.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +14,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfig {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
 
     @Bean
     public static PasswordEncoder passwordEncoder(){
@@ -17,6 +27,9 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain filterSecurity(HttpSecurity http) throws Exception {
+        Role adminRole = Role.createAdminRole();
+        roleRepository.save(adminRole);
+
         http
                 .csrf(c-> c.disable())
                 .cors(c-> c.disable())
