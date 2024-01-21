@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -19,13 +20,22 @@
     <a href="#">Cars/Price</a>
     <a href="#">About</a>
     <a href="/login" method="post">Login/Register</a>
+
 </nav>
 
 <section>
     <h2>Date</h2>
     <p>Chose date</p>
 </section>
-
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+</div>
+<div sec:authorize="hasRole('ADMIN')">
+    This content is only shown to administrators.
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+    This content is only shown to users.
+</div>
 <footer>
     &copy; 2024 Car Rental
 </footer>

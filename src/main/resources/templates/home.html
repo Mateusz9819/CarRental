@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>CarRental</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <title>Welcome to Spring Security Thymeleaf tutorial</title>
 </head>
 <body>
-<header>
-    <span class ="title">Car Rental</span>
-</header>
-<div class="main-content">
-</div>
+<h2>Welcome</h2>
+<p>Spring Security Thymeleaf tutorial</p>
+<div sec:authorize="hasRole('USER')">Text visible to user.</div>
+<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+<div sec:authorize="isAuthenticated()">Text visible only to
+    authenticated users.</div>
+Authenticated username:
+<div sec:authentication="name"></div>
+Authenticated user roles:
+<div sec:authentication="principal.authorities"></div>
 </body>
 </html>
-
