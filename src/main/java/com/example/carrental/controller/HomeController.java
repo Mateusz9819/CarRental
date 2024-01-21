@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
     @GetMapping("/")
-    public String defaultPage(Authentication authentication) {
-        String username = authentication.name();
+    public String defaultPage() {
+
         return "index";
     }
     @GetMapping("/login")
