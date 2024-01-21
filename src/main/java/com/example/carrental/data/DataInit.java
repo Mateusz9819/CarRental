@@ -39,5 +39,19 @@ public class DataInit implements CommandLineRunner {
         adminUser.setEmail("admin@example.com");
         adminUser.setRoles(Set.of(adminRole));
         userRepository.save(adminUser);
+
+        Role clientRole = roleRepository.findByName("CLIENT")
+                .orElseGet(() -> {
+                Role newClientRole = new Role();
+                newClientRole.setName("CLIENT");
+                return roleRepository.save(newClientRole);
+        });
+
+        User clientUser = new User();
+        clientUser.setUsername("client");
+        clientUser.setPassword(passwordEncoder.encode("client123"));
+        clientUser.setEmail("client@example.com");
+        clientUser.setRoles(Set.of(clientRole));
+        userRepository.save(clientUser);
     }
 }
