@@ -1,3 +1,4 @@
+// Klasa Role
 package com.example.carrental.Entity;
 
 import jakarta.persistence.Entity;
