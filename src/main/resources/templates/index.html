@@ -28,7 +28,6 @@
     <p>Chose date</p>
 </section>
 <div sec:authorize="isAuthenticated()">
-    This content is only shown to authenticated users.
 </div>
 <div sec:authorize="hasRole('ADMIN')">
     This content is only shown to administrators.
