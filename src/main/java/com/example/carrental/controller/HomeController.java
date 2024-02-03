@@ -12,6 +12,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String defaultPage() {
+
         return "index";
     }
 
