@@ -1,40 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental</title>
+    <title>Cars/Price</title>
     <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 
 <body>
 
 <header>
-    <h1>Car Rental</h1>
+    <h1>Cars/Price</h1>
 </header>
 
 <nav>
     <a href="#">Main</a>
-    <a href="/cars" method="post">Cars/Price</a>
+    <a href="#">Cars/Price</a>
     <a href="#">About</a>
     <a href="/login" method="post">Login/Register</a>
 
 </nav>
 
-<section>
-    <h2>Date</h2>
-    <p>Chose date</p>
-</section>
-<div sec:authorize="isAuthenticated()">
-    This content is only shown to authenticated users.
-</div>
-<div sec:authorize="hasRole('ADMIN')">
-    This content is only shown to administrators.
-</div>
-<div sec:authorize="hasRole('ROLE_USER')">
-    This content is only shown to users.
+<div class="main-content">
+    <div class="car" th:each="car : ${cars}">
+        <p class="car-name" th:text="${car.name}"></p>
+        <img th:src="@{${car.imgUrl}}"/>
+
+        <div>
+            <span th:text="${car.yearOfProduction}"></span>
+            <span th:text="${car.engine}"></span>
+        </div>
+        <a href="" class="check-ofert">Check Offert</a>
+    </div>
+
 </div>
 <footer>
     &copy; 2024 Car Rental

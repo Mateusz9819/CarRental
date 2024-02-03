@@ -1,14 +1,24 @@
 package com.example.carrental.controller;
 
-import org.springframework.security.core.Authentication;
+import com.example.carrental.Entity.Car;
+import com.example.carrental.repository.CarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
+
 @Controller
 public class HomeController {
-
-
+    private final CarRepository carRepository;
+    @Autowired
+    public HomeController(CarRepository carRepository) {
+        this.carRepository = carRepository;
+    }
 
     @GetMapping("/")
     public String defaultPage() {
@@ -25,9 +35,9 @@ public class HomeController {
     public String home() {
         return "home";
     }
-
-    @GetMapping("/logout")
-    public String logout() {
-        return "redirect:/login";
+    @GetMapping("/cars")
+    public String cars(Model model) {
+        model.addAttribute("cars", carRepository.findAll());
+        return "cars";
     }
 }
