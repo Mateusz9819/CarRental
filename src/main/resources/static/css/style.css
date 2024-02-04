@@ -8,7 +8,7 @@ body {
     min-height: 100vh;
 }
 
-header {
+header, nav, footer {
     background-color: #333;
     color: #fff;
     padding: 10px;
@@ -17,9 +17,6 @@ header {
 
 nav {
     background-color: #444;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
 }
 
 nav a {
@@ -33,12 +30,9 @@ section {
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
     margin-top: auto;
 }
+
 .main-content {
     background-color: rgb(230, 230, 230);
     margin: auto;
@@ -58,8 +52,8 @@ footer {
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
-
 }
+
 .car-name {
     background-color: black;
     color: white;
@@ -69,14 +63,14 @@ footer {
     font-weight: bold;
     width: calc(100% - 6px);
     margin-top: 0;
-
 }
-.car img{
+
+.car img {
     width: 400px;
     height: 300px;
 }
 
-.check-ofert {
+.check-offer {
     background-color: orange;
     color: white;
     text-align: center;
@@ -86,6 +80,7 @@ footer {
     width: 200px;
     margin-top: 0;
 }
-.check-ofert:hover {
+
+.check-offer:hover {
     background-color: green;
 }

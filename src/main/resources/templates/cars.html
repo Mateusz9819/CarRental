@@ -15,26 +15,25 @@
 </header>
 
 <nav>
-    <a href="#">Main</a>
-    <a href="#">Cars/Price</a>
-    <a href="#">About</a>
-    <a href="/login" method="post">Login/Register</a>
-
+    <a th:href="@{/}" class="nav-link">Main</a>
+    <a th:href="@{/cars-price}" class="nav-link">Cars/Price</a>
+    <a th:href="@{/about}" class="nav-link">About</a>
+    <a th:href="@{/login}" method="post" class="nav-link">Login/Register</a>
 </nav>
 
 <div class="main-content">
     <div class="car" th:each="car : ${cars}">
         <p class="car-name" th:text="${car.name}"></p>
-        <img th:src="@{${car.imgUrl}}"/>
+        <img th:src="@{${car.imgUrl}}" alt="Car Image"/>
 
         <div>
             <span th:text="${car.yearOfProduction}"></span>
             <span th:text="${car.engine}"></span>
         </div>
-        <a href="" class="check-ofert">Check Offert</a>
+        <a th:href="@{'/car-details/' + ${car.id}}" class="check-offer">Check Offer</a>
     </div>
-
 </div>
+
 <footer>
     &copy; 2024 Car Rental
 </footer>

@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>MyShop</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Car Rental</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
+
 <header>
     <span class="title">Car Rental</span>
 </header>
@@ -13,23 +14,28 @@
 <div class="main-content">
 
     <div class="summary">
-        <h1>Dodaj </h1>
+        <h1>Dodaj Samochód</h1>
 
         <form th:action="@{/admin}" method="post">
-            <label>Nazwa</label>
-            <input type="text" name="name" required>
-            <label >Model</label>
-            <input type="text" name="model "required>
-            <label >Year</label>
-            <input type="text" name="yearOfProduction"required>
-            <label >Engine</label>
-            <input type="text" name="engine"required>
-            <label>urlImg</label>
-            <input type="text" name="imgUrl">
+            <label for="name">Nazwa</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="model">Model</label>
+            <input type="text" id="model" name="model" required>
+
+            <label for="year">Rok produkcji</label>
+            <input type="text" id="year" name="yearOfProduction" required>
+
+            <label for="engine">Silnik</label>
+            <input type="text" id="engine" name="engine" required>
+
+            <label for="imgUrl">URL obrazka</label>
+            <input type="text" id="imgUrl" name="imgUrl">
+
             <button type="submit">Dodaj</button>
         </form>
-
     </div>
 </div>
+
 </body>
 </html>

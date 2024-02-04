@@ -1,6 +1,6 @@
 package com.example.carrental.controller;
 
-import com.example.carrental.Entity.Car;
+import com.example.carrental.entity.Car;
 import com.example.carrental.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,9 @@
 // Klasa Role
-package com.example.carrental.Entity;
+package com.example.carrental.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
+
+import java.util.Set;
 
 @Getter
 @Entity
@@ -11,6 +13,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
     public Role() {
     }
     public Role(String name) {

@@ -1,6 +1,6 @@
 package com.example.carrental.security;
 
-import com.example.carrental.Entity.Role;
+import com.example.carrental.entity.Role;
 import com.example.carrental.repository.RoleRepository;
 import com.example.carrental.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

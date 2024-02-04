@@ -1,7 +1,8 @@
 package com.example.carrental.data;
-import com.example.carrental.Entity.Car;
-import com.example.carrental.Entity.Role;
-import com.example.carrental.Entity.User;
+
+import com.example.carrental.entity.Car;
+import com.example.carrental.entity.Role;
+import com.example.carrental.entity.User;
 import com.example.carrental.repository.CarRepository;
 import com.example.carrental.repository.RoleRepository;
 import com.example.carrental.repository.UserRepository;
@@ -33,9 +34,9 @@ public class DataInit implements CommandLineRunner {
     private void initData() {
 
         carRepository.saveAll(List.of(
-                new Car(null,"BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
-                new Car(null, "BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
-                new Car(null, "BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png")
+                new Car(null, "BMW", "M8", "2018", "5.0", "https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
+                new Car(null, "Audi", "A4", "2020", "2.0", "https://example.com/audi-a4.jpg"),
+                new Car(null, "Mercedes", "E-Class", "2019", "3.0", "https://example.com/mercedes-e-class.jpg")
         ));
 
         Role adminRole = roleRepository.findByName("ADMIN")
@@ -65,5 +66,12 @@ public class DataInit implements CommandLineRunner {
         clientUser.setEmail("client@example.com");
         clientUser.setRoles(Set.of(clientRole));
         userRepository.save(clientUser);
+
+        User anotherClientUser = new User();
+        anotherClientUser.setUsername("anotherClient");
+        anotherClientUser.setPassword(passwordEncoder.encode("anotherClient123"));
+        anotherClientUser.setEmail("anotherClient@example.com");
+        anotherClientUser.setRoles(Set.of(clientRole));
+        userRepository.save(anotherClientUser);
     }
 }
