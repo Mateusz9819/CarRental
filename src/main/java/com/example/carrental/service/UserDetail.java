@@ -1,5 +1,5 @@
 package com.example.carrental.service;
-import com.example.carrental.Entity.User;
+import com.example.carrental.entity.User;
 import com.example.carrental.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

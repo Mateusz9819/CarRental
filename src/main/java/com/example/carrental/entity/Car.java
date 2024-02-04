@@ -1,13 +1,12 @@
-package com.example.carrental.Entity;
+package com.example.carrental.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +22,10 @@ public class Car {
     private String yearOfProduction;
     private String engine;
     private String imgUrl;
+
+    @OneToMany(mappedBy = "car")
+    private List<Rental> rentals;
+
+    public Car(Object o, String bmw, String m8, String number, String s, String url) {
+    }
 }

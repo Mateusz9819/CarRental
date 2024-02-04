@@ -1,7 +1,7 @@
 package com.example.carrental.security;
 
-import com.example.carrental.Entity.Role;
-import com.example.carrental.Entity.User;
+import com.example.carrental.entity.Role;
+import com.example.carrental.entity.User;
 import com.example.carrental.repository.RoleRepository;
 import com.example.carrental.repository.UserRepository;
 import org.springframework.security.core.Authentication;
