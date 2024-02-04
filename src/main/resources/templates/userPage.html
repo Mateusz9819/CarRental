@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rental</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+
+<header>
+  <h1>Car Rental</h1>
+</header>
+
+<nav>
+  <a href="/">Main</a>
+  <a href="/cars">Cars/Price</a>
+  <a href="/login" method="post">Login/Register</a>
+
+</nav>
+
+<section>
+  <h2>Jesteś zalogowany! Możesz teraz sfinalizować tranzakcję!</h2>
+  <div sec:authorize="isAuthenticated()">Text visible only to
+    authenticated users.</div>
+  Authenticated username:
+  <div sec:authentication="name"></div>
+  Authenticated user roles:
+  <div sec:authentication="principal.authorities"></div>
+</section>
+
+<footer>
+  &copy; 2024 Car Rental
+</footer>
+
+</body>
+
+</html>

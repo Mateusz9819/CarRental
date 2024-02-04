@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/adminPage")
 public class AdminControler {
     private final CarRepository carRepository;
 @Autowired
@@ -18,11 +18,16 @@ public class AdminControler {
 
     @GetMapping
     private String adminPage() {
-        return "adminView/addCar";
+        return "adminPage";
     }
     @PostMapping
     private String addItem(Car car) {
         carRepository.save(car);
         return "redirect:/cars";
     }
+    @GetMapping("/")
+    public String defaultPage() {
+        return "index";
+    }
+
 }

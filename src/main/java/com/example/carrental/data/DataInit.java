@@ -34,7 +34,7 @@ public class DataInit implements CommandLineRunner {
 
         carRepository.saveAll(List.of(
                 new Car(null,"BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
-                new Car(null, "BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
+                new Car(null, "TESLA","MODEL 3","2023","ELECTRIC","https://edgecast-img.yahoo.net/mysterio/api/8048C6FF048348E265D37CF92A422C3DC9D106F585042254799FAC808D83BD67/autoblog/resizefill_w660_h372;quality_80;format_webp;cc_31536000;/https://s.aolcdn.com/commerce/autodata/images/USD20TSC032A021001.jpg"),
                 new Car(null, "BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png")
         ));
 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #ccc; /* Added frame */
+            border-radius: 5px;
+            overflow: hidden; /* Hide rounded corners for children with float */
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .admin-panel {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .admin-section {
+            flex: 1;
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+        a {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+        a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Admin Panel</h1>
+</header>
+
+<div class="container">
+    <div class="admin-panel">
+
+        <div class="admin-section">
+            <h3>Users</h3>
+            <p>Here you can manage users.</p>
+
+        </div>
+        <div class="admin-section">
+            <h3>Add Car</h3>
+            <p>Here you can add new cars to the system.</p>
+            <a th:href="@{/addCar}">Add Car</a>
+        </div>
+
+        <div class="admin-section">
+            <h3>Remove Car</h3>
+            <p>Here you can remove existing cars from the system.</p>
+            <a th:href="@{/removeCar}">Remove car</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

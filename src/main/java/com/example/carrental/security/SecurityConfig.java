@@ -39,12 +39,13 @@ public class SecurityConfig {
                         authorize
                                 .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/adminPage")).hasAuthority("ADMIN")
                                 .anyRequest().authenticated()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/home")
+                                .successHandler(new CustomAuthenticationSuccessHandler(userRepository, roleRepository))
                                 .permitAll()
                 ).logout(
                         logout -> logout

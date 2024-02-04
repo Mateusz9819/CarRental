@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Entity
+
 @Table(name = "Role")
 public class Role {
     @Id
@@ -17,15 +18,12 @@ public class Role {
         this.name = name;
     }
     public static Role createAdminRole() {
-        return new Role("Admin");
+        return new Role("ADMIN");
     }
-    public static Role createClientRole() { return new Role("Client");}
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public static Role createClientRole() { return new Role("CLIENT");}
 
     public void setName(String name) {
         this.name = name;
     }
+
 }

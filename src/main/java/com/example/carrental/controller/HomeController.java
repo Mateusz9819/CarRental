@@ -1,16 +1,10 @@
 package com.example.carrental.controller;
 
-import com.example.carrental.Entity.Car;
 import com.example.carrental.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 
 @Controller
 public class HomeController {
@@ -22,15 +16,12 @@ public class HomeController {
 
     @GetMapping("/")
     public String defaultPage() {
-
         return "index";
     }
-
     @GetMapping("/login")
     public String login() {
         return "login";
     }
-
     @GetMapping("/home")
     public String home() {
         return "home";
@@ -39,5 +30,13 @@ public class HomeController {
     public String cars(Model model) {
         model.addAttribute("cars", carRepository.findAll());
         return "cars";
+    }
+    @GetMapping("/addCar")
+    public String addCarPage() {
+        return "addCar"; // Przyjmując, że masz plik HTML o nazwie "addCar.html"
+    }
+    @GetMapping("/userPage")
+    public String userPage() {
+        return "userPage";
     }
 }

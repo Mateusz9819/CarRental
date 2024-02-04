@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="thymeleaf.org">
+<html xmlns:th="thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Welcome to Spring Security Thymeleaf tutorial</title>
 </head>
@@ -7,7 +7,11 @@
 <h2>Welcome</h2>
 <p>Spring Security Thymeleaf tutorial</p>
 <div sec:authorize="hasRole('USER')">Text visible to user.</div>
-<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+    <a th:href="@{/addCar}">Go to Add Car</a>
+</div>
+
 <div sec:authorize="isAuthenticated()">Text visible only to
     authenticated users.</div>
 Authenticated username:

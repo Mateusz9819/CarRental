@@ -16,9 +16,8 @@
 </header>
 
 <nav>
-    <a href="#">Main</a>
-    <a href="/cars" method="post">Cars/Price</a>
-    <a href="#">About</a>
+    <a href="/">Main</a>
+    <a href="/cars">Cars/Price</a>
     <a href="/login" method="post">Login/Register</a>
 
 </nav>
@@ -27,14 +26,7 @@
     <h2>Date</h2>
     <p>Chose date</p>
 </section>
-<div sec:authorize="isAuthenticated()">
-</div>
-<div sec:authorize="hasRole('ADMIN')">
-    This content is only shown to administrators.
-</div>
-<div sec:authorize="hasRole('ROLE_USER')">
-    This content is only shown to users.
-</div>
+
 <footer>
     &copy; 2024 Car Rental
 </footer>
