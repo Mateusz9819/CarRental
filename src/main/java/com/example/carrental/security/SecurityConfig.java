@@ -39,7 +39,10 @@ public class SecurityConfig {
                         authorize
                                 .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-                                .requestMatchers(new AntPathRequestMatcher("/adminPage")).hasAuthority("ADMIN")
+                                .requestMatchers(new AntPathRequestMatcher("/adminView/adminPage")).hasAuthority("ADMIN")
+                                .requestMatchers(new AntPathRequestMatcher("/adminView/addCar")).hasAuthority("ADMIN")
+                                .requestMatchers(new AntPathRequestMatcher("/adminView/removeCar")).hasAuthority("ADMIN")
+
                                 .anyRequest().authenticated()
                 ).formLogin(
                         form -> form

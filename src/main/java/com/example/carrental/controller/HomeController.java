@@ -13,7 +13,6 @@ public class HomeController {
     public HomeController(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
-
     @GetMapping("/")
     public String defaultPage() {
         return "index";
@@ -31,12 +30,10 @@ public class HomeController {
         model.addAttribute("cars", carRepository.findAll());
         return "cars";
     }
-    @GetMapping("/addCar")
-    public String addCarPage() {
-        return "addCar"; // Przyjmując, że masz plik HTML o nazwie "addCar.html"
-    }
     @GetMapping("/userPage")
     public String userPage() {
         return "userPage";
     }
+
+
 }

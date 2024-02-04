@@ -141,3 +141,13 @@ button:hover {
     background-color: #eee;
     border-radius: 5px;
 }
+a {
+    color: #333;
+    text-decoration: none;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+a:hover {
+    color: #555;
+}

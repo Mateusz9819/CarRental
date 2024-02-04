@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      >
 <head>
     <title>Admin Panel</title>
     <style>
@@ -86,14 +86,19 @@
         <div class="admin-section">
             <h3>Add Car</h3>
             <p>Here you can add new cars to the system.</p>
-            <a th:href="@{/addCar}">Add Car</a>
+            <a th:href="@{/adminView/addCar}">Add Car</a>
         </div>
 
         <div class="admin-section">
             <h3>Remove Car</h3>
             <p>Here you can remove existing cars from the system.</p>
-            <a th:href="@{/removeCar}">Remove car</a>
+            <a th:href="@{/adminView/removeCar}">Remove car</a>
         </div>
+    </div>
+    <div class="admin-section">
+        <h3>Go to Main Page</h3>
+        <p>Return to the main page.</p>
+        <a th:href="@{/}" class="main-page-button">Main Page</a>
     </div>
 </div>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>MyShop</title>
@@ -7,15 +8,15 @@
 </head>
 <body>
 <header>
-    <span class="title">Car Rental</span>
+    <h1>Car Management</h1>
 </header>
 
 <div class="main-content">
 
     <div class="summary">
-        <h1>Dodaj </h1>
+        <h1>Add car</h1>
 
-        <form th:action="@{/admin}" method="post">
+        <form th:action="@{/adminView/addCar}" method="post">
             <label>Nazwa</label>
             <input type="text" name="name" required>
             <label >Model</label>
@@ -23,11 +24,14 @@
             <label >Year</label>
             <input type="text" name="yearOfProduction"required>
             <label >Engine</label>
-            <input type="text" name="engine"required>
+            <label>
+                <input type="text" name="engine"required>
+            </label>
             <label>urlImg</label>
             <input type="text" name="imgUrl">
             <button type="submit">Dodaj</button>
         </form>
+        <a th:href="@{/adminPage}">Back to Admin Panel</a>
 
     </div>
 </div>

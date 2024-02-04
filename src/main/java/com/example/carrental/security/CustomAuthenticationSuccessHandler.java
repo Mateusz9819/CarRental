@@ -60,7 +60,7 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
                     User user = optionalUser.get();
                     Optional<Role> adminRole = roleRepository.findByName("ADMIN");
                     if (adminRole.isPresent()) {
-                        return "/adminPage";
+                        return "adminPage";
                     }
                 }
             } else if (grantedAuthority.getAuthority().equals("CLIENT")) {

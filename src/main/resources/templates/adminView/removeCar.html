@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .car-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        a:hover {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Car Management</h1>
+</header>
+
+<div class="container">
+    <h2>Car List</h2>
+
+    <div class="car-list">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.id}"></td>
+                <td th:text="${car.name}"></td>
+                <td th:text="${car.model}"></td>
+                <td>
+                    <form th:action="@{/adminView/removeCar}" method="post">
+                        <input type="hidden" name="carId" th:value="${car.id}">
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/adminPage}">Back to Admin Panel</a>
+    </div>
+</div>
+
+</body>
+</html>
