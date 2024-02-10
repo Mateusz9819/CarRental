@@ -2,6 +2,7 @@ package com.example.carrental.controller;
 
 import com.example.carrental.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class HomeController {
         return "cars";
     }
     @GetMapping("/userPage")
+    @PreAuthorize("hasROle('CLIENT')")
     public String userPage() {
         return "userPage";
     }

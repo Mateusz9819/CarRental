@@ -16,6 +16,9 @@
     <a href="/">Main</a>
     <a href="/cars">Cars/Price</a>
     <a href="/login" method="post">Login/Register</a>
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <a th:href="@{/logout}" class="btn btn-primary" sec:authorize="isAuthenticated()">Wyloguj</a>
+    </div>
 
 </nav>
 <section>

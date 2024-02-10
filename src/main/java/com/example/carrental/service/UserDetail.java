@@ -18,11 +18,19 @@ public class UserDetail implements UserDetailsService {
     UserRepository userRepo;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsernameOrEmail(username, username)
+        User user = userRepo.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not exists by Username or Email"));
         Set<GrantedAuthority> authorities = user.getRoles().stream()
                 .map((role) -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toSet());
         return new org.springframework.security.core.userdetails.User(username,user.getPassword(),authorities);
+    }
+    public UserDetails loadUserBySessionId(String sessionId) throws UsernameNotFoundException {
+        User user = userRepo.findBySessionId(sessionId)
+                .orElseThrow(() -> new UsernameNotFoundException("User not exists by Session ID"));
+        Set<GrantedAuthority> authorities = user.getRoles().stream()
+                .map((role) -> new SimpleGrantedAuthority(role.getName()))
+                .collect(Collectors.toSet());
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 }

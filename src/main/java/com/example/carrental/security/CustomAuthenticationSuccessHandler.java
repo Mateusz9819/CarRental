@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
@@ -36,6 +37,16 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
                                         Authentication authentication) throws IOException, ServletException {
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
+
+        String newSessionId = generateNewSessionId();
+        String username = authentication.getName();
+        logger.info("Updating session ID for user: " + username);
+        logger.info("New session ID: " + newSessionId);
+        userRepository.updateSessionId(username, newSessionId);
+    }
+
+    private String generateNewSessionId() {
+        return UUID.randomUUID().toString();
     }
 
     protected void handle(HttpServletRequest request,
@@ -50,11 +61,14 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
+
     public String determineTargetUrl(Authentication authentication) {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ADMIN")) {
+            String authority = grantedAuthority.getAuthority();
+
+            if ("ADMIN".equals(authority)) {
                 Optional<User> optionalUser = userRepository.findByUsername(authentication.getName());
                 if (optionalUser.isPresent()) {
                     User user = optionalUser.get();
@@ -63,10 +77,11 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
                         return "adminPage";
                     }
                 }
-            } else if (grantedAuthority.getAuthority().equals("CLIENT")) {
+            } else if ("CLIENT".equals(authority)) {
                 return "/userPage";
             }
         }
+
         return "/";
     }
 }
