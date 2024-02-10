@@ -1,4 +1,3 @@
-package com.example.carrental.data;
 import com.example.carrental.Entity.Car;
 import com.example.carrental.Entity.Role;
 import com.example.carrental.Entity.User;
@@ -18,10 +17,13 @@ public class DataInit implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private RoleRepository roleRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private CarRepository carRepository;
 
@@ -32,12 +34,14 @@ public class DataInit implements CommandLineRunner {
 
     private void initData() {
 
+        // Dodawanie samochodów do repozytorium
         carRepository.saveAll(List.of(
-                new Car(null,"BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
-                new Car(null, "BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
-                new Car(null, "BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png")
+                Car.builder().name("BMW").model("X5").yearOfProduction("2022").engine("3.0").imgUrl("https://example.com/bmw-x5.jpg").available(true).build(),
+                Car.builder().name("Audi").model("A6").yearOfProduction("2021").engine("2.0").imgUrl("https://example.com/audi-a6.jpg").available(true).build(),
+                Car.builder().name("Mercedes").model("C-Class").yearOfProduction("2020").engine("2.0").imgUrl("https://example.com/mercedes-c-class.jpg").available(false).build()
         ));
 
+        // Kod pozostały bez zmian
         Role adminRole = roleRepository.findByName("ADMIN")
                 .orElseGet(() -> {
                     Role newAdminRole = new Role();

@@ -1,6 +1,6 @@
 package com.example.carrental.repository;
 
-import com.example.carrental.entity.Role;
+import com.example.carrental.Entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

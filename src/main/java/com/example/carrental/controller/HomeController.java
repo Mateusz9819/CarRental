@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -38,5 +39,15 @@ public class HomeController {
     @GetMapping("/userPage")
     public String userPage() {
         return "userPage";
+    }
+
+    @GetMapping("/chooseCar")
+    public String chooseCar() {
+        return "chooseCar";
+    }
+
+        @PostMapping("/chooseCar")
+        public String chooseCarr() {
+            return "chooseCar";
     }
 }
