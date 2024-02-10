@@ -20,16 +20,6 @@ public class User {
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<Role> roles;
-    @Column(name = "session_id", unique = true)
-    private String sessionId;
-
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
 
     public Integer getId() {
         return id;

@@ -1,7 +1,5 @@
 package com.example.carrental.data;
-import com.example.carrental.Entity.Car;
-import com.example.carrental.Entity.Role;
-import com.example.carrental.Entity.User;
+
 import com.example.carrental.repository.CarRepository;
 import com.example.carrental.repository.RoleRepository;
 import com.example.carrental.repository.UserRepository;
@@ -18,10 +16,13 @@ public class DataInit implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private RoleRepository roleRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private CarRepository carRepository;
 
@@ -32,12 +33,14 @@ public class DataInit implements CommandLineRunner {
 
     private void initData() {
 
+        // Dodawanie samochodów do repozytorium
         carRepository.saveAll(List.of(
-                new Car(null,"BMW","M8","2018","5.0","https://inv.assets.ansira.net/ChromeColorMatch/us/TRANSPARENT_cc_2024BMC910025_01_1280_475.png"),
-                new Car(null, "TESLA","MODEL 3","2023","ELECTRIC","https://edgecast-img.yahoo.net/mysterio/api/8048C6FF048348E265D37CF92A422C3DC9D106F585042254799FAC808D83BD67/autoblog/resizefill_w660_h372;quality_80;format_webp;cc_31536000;/https://s.aolcdn.com/commerce/autodata/images/USD20TSC032A021001.jpg"),
-                new Car(null, "AUDI","A8","2020","3.0","https://wallpapercave.com/wp/wp4254264.jpg")
+                Car.builder().name("BMW").model("X5").yearOfProduction("2022").engine("3.0").imgUrl("https://example.com/bmw-x5.jpg").available(true).build(),
+                Car.builder().name("Audi").model("A6").yearOfProduction("2021").engine("2.0").imgUrl("https://example.com/audi-a6.jpg").available(true).build(),
+                Car.builder().name("Mercedes").model("C-Class").yearOfProduction("2020").engine("2.0").imgUrl("https://example.com/mercedes-c-class.jpg").available(false).build()
         ));
 
+        // Kod pozostały bez zmian
         Role adminRole = roleRepository.findByName("ADMIN")
                 .orElseGet(() -> {
                     Role newAdminRole = new Role();
