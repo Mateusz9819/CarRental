@@ -1,43 +1,176 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cars/Price</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cars/Price</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                }
 
-<body>
+            header {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
 
-<header>
-    <h1>Cars/Price</h1>
-</header>
+            nav {
+                background-color: #444;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
 
-<nav>
-    <a href="/">Main</a>
-    <a href="/cars">Cars/Price</a>
-    <a href="/login" method="post">Login/Register</a>
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 15px;
+            }
 
-</nav>
+            section {
+                padding: 20px;
+            }
 
-<div class="main-content">
-    <div class="car" th:each="car : ${cars}">
-        <p class="car-name" th:text="${car.name}"></p>
-        <img th:src="@{${car.imgUrl}}"/>
+            footer {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                margin-top: auto;
+            }
+            .main-content {
+                background-color: rgb(230, 230, 230);
+                margin: auto;
+                margin-top: 30px;
+                width: 75%;
+                padding: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
 
-        <div>
-            <span th:text="${car.yearOfProduction}"></span>
-            <span th:text="${car.engine}"></span>
+            .car {
+                background-color: rgb(255, 255, 255);
+                width: 400px;
+                height: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+
+                }
+
+            .car-name {
+                background-color: black;
+                color: white;
+                text-align: center;
+                padding: 3px;
+                font-size: larger;
+                font-weight: bold;
+                width: calc(100% - 6px);
+                margin-top: 0;
+            }
+
+            .car img{
+                width: 400px;
+                height: 300px;
+            }
+
+            .check-ofert {
+                background-color: orange;
+                color: white;
+                text-align: center;
+                padding: 3px;
+                font-size: larger;
+                font-weight: bold;
+                width: 200px;
+                margin-top: 0;
+            }
+
+            .check-ofert:hover {
+                background-color: green;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            h2 {
+                color: #333;
+            }
+
+
+            button {
+                padding: 10px 15px;
+                margin: 5px;
+                cursor: pointer;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+            }
+
+            button:hover {
+                background-color: #555;
+            }
+
+            a {
+                color: #333;
+                text-decoration: none;
+                margin-top: 15px;
+                display: inline-block;
+            }
+
+            a:hover {
+                color: #555;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Cars/Price</h1>
+        </header>
+
+        <nav>
+            <a href="/">Main</a>
+            <a href="/cars">Cars/Price</a>
+            <a href="/login" method="post">Login/Register</a>
+        </nav>
+
+        <div class="main-content">
+            <div class="car" th:each="car : ${cars}">
+                <p class="car-name" th:text="${car.name}"></p>
+                <img th:src="@{${car.imgUrl}}"/>
+
+                <div>
+                    <span th:text="${car.yearOfProduction}"></span>
+                    <span th:text="${car.engine}"></span>
+                </div>
+                <a href="" class="check-ofert">Check Offert</a>
+            </div>
         </div>
-        <a href="" class="check-ofert">Check Offert</a>
-    </div>
-
-</div>
-<footer>
-    &copy; 2024 Car Rental
-</footer>
-
-</body>
-
+        <footer>
+    &copy;      2024 Car Rental
+        </footer>
+    </body>
 </html>

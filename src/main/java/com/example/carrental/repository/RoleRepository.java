@@ -1,11 +1,11 @@
 package com.example.carrental.repository;
 
-import com.example.carrental.Entity.Role;
-import com.example.carrental.Entity.User;
+import com.example.carrental.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
-
+@Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
     Optional<Role> findByName(String roleName);
 }

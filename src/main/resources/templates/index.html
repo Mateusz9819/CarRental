@@ -1,33 +1,151 @@
-
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+    <html lang="en" xmlns:sec="thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
-</head>
-<body>
-<header>
-    <h1>Car Rental</h1>
-</header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Car Rental</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            header {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav {
+                background-color: #444;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            footer {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                margin-top: auto;
+            }
+
+            .car img{
+                width: 400px;
+                height: 300px;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+
+            header {
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+            }
+
+            h2 {
+                color: #333;
+            }
+
+            button {
+                padding: 10px 15px;
+                margin: 5px;
+                cursor: pointer;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+            }
+
+            button:hover {
+                background-color: #555;
+            }
+            a {
+                color: #333;
+                text-decoration: none;
+                margin-top: 15px;
+                display: inline-block;
+            }
+
+            a:hover {
+                color: #555;
+            }
+        </style>
+
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+
+    <body>
+        <header>
+            <h1>Car Rental</h1>
+        </header>
 <nav>
     <a href="/">Main</a>
     <a href="/cars">Cars/Price</a>
     <a href="/login" method="post">Login/Register</a>
     <div th:if="${#authorization.expression('isAuthenticated()')}">
         <a th:href="@{/logout}" class="btn btn-primary" sec:authorize="isAuthenticated()">Wyloguj</a>
+        <a th:href="@{/adminView/adminPage}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')">Admin Panel</a>
     </div>
-
 </nav>
 <section>
-    <h2>Date</h2>
-    <p>Chose date</p>
+    <div class="form-container">
+        <!-- Formularz "Filter by Date Range" i "Car Selection" -->
+        <form th:action="@{/cars}" method="post">
+            <!-- Formularz "Filter by Date Range" -->
+            <div>
+                <h3>Filter by Date Range</h3>
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" required>
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" required>
+            </div>
+
+            <!-- Formularz "Car Selection" -->
+            <div>
+                <h3>Car Selection</h3>
+                <label for="carType">Select Car Type:</label>
+                <select id="carType" name="carType">
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Convertible">Convertible</option>
+                </select>
+            </div>
+
+            <button type="submit">Search Cars</button>
+        </form>
+    </div>
 </section>
 
 <footer>
     &copy; 2024 Car Rental
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+    Logged in as: <span th:text="${#authentication.principal.authorities}"></span>
+    </div>
 </footer>
 </body>
 </html>

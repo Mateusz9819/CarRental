@@ -1,4 +1,4 @@
-package com.example.carrental.Entity;
+package com.example.carrental.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

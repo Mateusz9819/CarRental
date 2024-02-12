@@ -1,10 +1,11 @@
 package com.example.carrental.data;
-import com.example.carrental.Entity.Car;
-import com.example.carrental.Entity.Role;
-import com.example.carrental.Entity.User;
+import com.example.carrental.entity.Car;
+import com.example.carrental.entity.Role;
+import com.example.carrental.entity.User;
 import com.example.carrental.repository.CarRepository;
 import com.example.carrental.repository.RoleRepository;
 import com.example.carrental.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,16 +15,16 @@ import java.util.List;
 import java.util.Set;
 
 @Component
+@RequiredArgsConstructor
 public class DataInit implements CommandLineRunner {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private CarRepository carRepository;
+    private final UserRepository userRepository;
+
+    private final RoleRepository roleRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+    private final CarRepository carRepository;
 
     @Override
     public void run(String... args) {

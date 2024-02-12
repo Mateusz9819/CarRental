@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .registration-panel {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .registration-section {
+            flex: 1;
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 5px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Registration Page</h1>
+</header>
+
+<div class="container">
+    <div class="registration-panel">
+
+        <div class="registration-section">
+            <h3>Register</h3>
+            <p>Fill in the form to register.</p>
+            <form th:action="@{/register}" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <div class="registration-section">
+            <h3>Go to Main Page</h3>
+            <p>Return to the main page.</p>
+            <a href="/">Main Page</a>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

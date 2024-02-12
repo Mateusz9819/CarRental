@@ -22,20 +22,9 @@ public class HomeController {
     public String login() {
         return "login";
     }
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
     @GetMapping("/cars")
     public String cars(Model model) {
         model.addAttribute("cars", carRepository.findAll());
         return "cars";
     }
-    @GetMapping("/userPage")
-    @PreAuthorize("hasROle('CLIENT')")
-    public String userPage() {
-        return "userPage";
-    }
-
-
 }

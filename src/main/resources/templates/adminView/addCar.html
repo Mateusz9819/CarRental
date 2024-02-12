@@ -1,39 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <title>MyShop</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-<header>
-    <h1>Car Management</h1>
-</header>
 
-<div class="main-content">
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>MyShop</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
 
-    <div class="summary">
-        <h1>Add car</h1>
+    <body>
+        <header>
+            <h1>Car Management</h1>
+        </header>
 
-        <form th:action="@{/adminView/addCar}" method="post">
-            <label>Nazwa</label>
-            <input type="text" name="name" required>
-            <label >Model</label>
-            <input type="text" name="model "required>
-            <label >Year</label>
-            <input type="text" name="yearOfProduction"required>
-            <label >Engine</label>
-            <label>
-                <input type="text" name="engine"required>
-            </label>
-            <label>urlImg</label>
-            <input type="text" name="imgUrl">
-            <button type="submit">Dodaj</button>
-        </form>
-        <a th:href="@{/adminPage}">Back to Admin Panel</a>
+        <div class="main-content">
 
-    </div>
-</div>
-</body>
+            <div class="summary">
+                <h1>Add car</h1>
+
+                <form th:action="@{/adminView/addCar}" method="post">
+                    <label>Nazwa</label>
+                    <input type="text" name="name" required>
+                    <label >Model</label>
+                    <input type="text" name="model "required>
+                    <label >Year</label>
+                    <input type="text" name="yearOfProduction"required>
+                    <label >Engine</label>
+                    <label><input type="text" name="engine"required></label>
+                    <label>urlImg</label>
+                    <input type="text" name="imgUrl">
+                    <button type="submit">Add</button>
+                </form>
+                <a th:href="@{/adminPage}">Back to Admin Panel</a>
+            </div>
+        </div>
+    </body>
 </html>

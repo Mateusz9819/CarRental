@@ -1,12 +1,11 @@
 package com.example.carrental.security;
 
-import com.example.carrental.Entity.Role;
-import com.example.carrental.Entity.User;
+import com.example.carrental.entity.Role;
+import com.example.carrental.entity.User;
 import com.example.carrental.repository.RoleRepository;
 import com.example.carrental.repository.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Optional;
-import java.util.UUID;
 
 @Component
 public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
@@ -38,15 +36,6 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
 
-        String newSessionId = generateNewSessionId();
-        String username = authentication.getName();
-        logger.info("Updating session ID for user: " + username);
-        logger.info("New session ID: " + newSessionId);
-        userRepository.updateSessionId(username, newSessionId);
-    }
-
-    private String generateNewSessionId() {
-        return UUID.randomUUID().toString();
     }
 
     protected void handle(HttpServletRequest request,
@@ -67,7 +56,6 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
         for (GrantedAuthority grantedAuthority : authorities) {
             String authority = grantedAuthority.getAuthority();
-
             if ("ADMIN".equals(authority)) {
                 Optional<User> optionalUser = userRepository.findByUsername(authentication.getName());
                 if (optionalUser.isPresent()) {
@@ -78,10 +66,9 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
                     }
                 }
             } else if ("CLIENT".equals(authority)) {
-                return "/userPage";
+                return "/";
             }
         }
-
         return "/";
     }
 }

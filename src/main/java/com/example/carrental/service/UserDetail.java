@@ -1,6 +1,7 @@
 package com.example.carrental.service;
-import com.example.carrental.Entity.User;
+import com.example.carrental.entity.User;
 import com.example.carrental.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,24 +14,17 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class UserDetail implements UserDetailsService {
-    @Autowired
-    UserRepository userRepo;
+
+    private final UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not exists by Username or Email"));
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not exists by Username"));
         Set<GrantedAuthority> authorities = user.getRoles().stream()
                 .map((role) -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toSet());
         return new org.springframework.security.core.userdetails.User(username,user.getPassword(),authorities);
-    }
-    public UserDetails loadUserBySessionId(String sessionId) throws UsernameNotFoundException {
-        User user = userRepo.findBySessionId(sessionId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not exists by Session ID"));
-        Set<GrantedAuthority> authorities = user.getRoles().stream()
-                .map((role) -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toSet());
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), authorities);
     }
 }

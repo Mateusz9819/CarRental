@@ -1,12 +1,12 @@
 // Klasa Role
-package com.example.carrental.Entity;
+package com.example.carrental.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Entity
-
-@Table(name = "Role")
+@Setter
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +21,5 @@ public class Role {
         return new Role("ADMIN");
     }
     public static Role createClientRole() { return new Role("CLIENT");}
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }
